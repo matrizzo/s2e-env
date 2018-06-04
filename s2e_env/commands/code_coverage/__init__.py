@@ -48,9 +48,9 @@ def get_tb_files(results_dir):
     tb_coverage_files = glob.glob(os.path.join(results_dir, '*', 'tbcoverage-*.json')) + \
                         glob.glob(os.path.join(results_dir, 'tbcoverage-*.json'))
     if not tb_coverage_files:
-        logger.warning('No translation block coverage files found in s2e-last. '
+        logger.warning('No translation block coverage files found in %s. '
                        'Did you enable the ``TranslationBlockCoverage`` '
-                       'plugin in s2e-config.lua?')
+                       'plugin in s2e-config.lua?', results_dir)
 
     return tb_coverage_files
 
@@ -80,6 +80,7 @@ def _tb_to_uint64(tb):
     size = tb[2]
     return start_addr, end_addr, size
 
+
 def aggregate_tb_files_per_state(tb_files):
     """
     Aggregate translation block coverage information from all files and
@@ -102,7 +103,7 @@ def aggregate_tb_files_per_state(tb_files):
 
             for module_path, coverage in data.iteritems():
                 states = {}
-                if module_path not in ret.keys():
+                if module_path not in ret:
                     ret[module_path] = states
                 else:
                     states = ret[module_path]
