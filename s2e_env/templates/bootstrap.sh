@@ -30,6 +30,7 @@ function prepare_target {
     chmod +x "$1"
 }
 
+{% if use_symb_input_file %}
 # This prepares the symbolic file inputs.
 # This function takes as input an optional seed file name.
 # If the seed file is present, the commands makes the seed symbolic.
@@ -80,6 +81,7 @@ function prepare_inputs {
     {% endif %}
     echo ${SYMB_FILE}
 }
+{% endif %}
 
 # This function executes the target program given in arguments.
 #
