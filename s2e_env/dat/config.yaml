@@ -82,10 +82,12 @@ dependencies:
 
         # s2e-env dependencies
         - lcov
-    ubuntu_16:
-        - libprocps-dev
     ubuntu_14:
         - libprocps3-dev
+    ubuntu_16:
+        - libprocps-dev
+    ubuntu_18:
+        - libprocps-dev
     ida:
         # IDA Pro TUI dependencies
         - lib32ncurses5
@@ -112,6 +114,7 @@ required_versions:
     ubuntu_major_ver:
         - 14
         - 16
+        - 18
     # images.json must have this version
     guest_images: 2
 
